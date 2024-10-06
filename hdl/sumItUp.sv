@@ -31,7 +31,7 @@ module sumItUp
 		end: reg_sum
 
 	assign addOut = inA + sum,
-		   ld_l = ~(((state==sA)&~go_l)|((state==sB)&~inAeq));
+		   ld_l = ~(((state==sA)&~go_l)|((state==sB)&~inAeq)),
 		   cl_l = ~((state==sB)&inAeq),
 		   done = (state==sB)&inAeq,
 		   inAeq = inA == 0;

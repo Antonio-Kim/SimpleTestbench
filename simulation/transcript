@@ -1,0 +1,19 @@
+# Compile of top.sv was successful.
+# Compile of downStream.sv was successful.
+# Compile of sumItUp.sv was successful.
+# 3 compiles, 1 failed with no errors.
+# Compile of top.sv was successful.
+# Compile of downStream.sv was successful.
+# Compile of sumItUp.sv was successful.
+# Compile of TBsimple.sv was successful.
+# 4 compiles, 0 failed with no errors.
+vsim -gui work.top
+# vsim -gui work.top 
+# Start time: 16:02:29 on Oct 06,2024
+# Loading sv_std.std
+# Loading work.top
+# Loading work.sumItUp
+# Loading work.downStream
+# Loading work.TBsimple
+# End time: 16:02:39 on Oct 06,2024, Elapsed time: 0:00:10
+# Errors: 0, Warnings: 3

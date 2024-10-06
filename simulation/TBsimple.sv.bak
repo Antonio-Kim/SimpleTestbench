@@ -1,4 +1,4 @@
-module TBsimple
+program TBsimple
 	(
 		input logic clk, done,
 		output logic [15:0] inA,
@@ -25,4 +25,4 @@ module TBsimple
 
 		#15 $finish;
 	end
-endmodule: TBsimple
+endprogram: TBsimple
