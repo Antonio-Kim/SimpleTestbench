@@ -11,7 +11,7 @@ cModel Technology
 dD:/intelFPGA/20.1
 vdownStream
 Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z1 !s110 1728255742
+Z1 !s110 1728260329
 !i10b 1
 !s100 nA[d7=BGK_bQa9HD;n34Z3
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -22,13 +22,13 @@ Z4 dC:/Users/Antonio/Desktop/Developer/verilog/SimpleTestbench/simulation
 w1728254704
 8C:/Users/Antonio/Desktop/Developer/verilog/SimpleTestbench/hdl/downStream.sv
 FC:/Users/Antonio/Desktop/Developer/verilog/SimpleTestbench/hdl/downStream.sv
-!i122 17
+!i122 21
 L0 1 11
 Z5 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z6 !s108 1728255742.000000
+Z6 !s108 1728260329.000000
 !s107 C:/Users/Antonio/Desktop/Developer/verilog/SimpleTestbench/hdl/downStream.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Antonio/Desktop/Developer/verilog/SimpleTestbench/hdl/downStream.sv|
 !i113 1
@@ -48,7 +48,7 @@ R4
 w1728255419
 8C:/Users/Antonio/Desktop/Developer/verilog/SimpleTestbench/hdl/sumItUp.sv
 FC:/Users/Antonio/Desktop/Developer/verilog/SimpleTestbench/hdl/sumItUp.sv
-!i122 18
+!i122 22
 L0 1 38
 R5
 r1
@@ -63,24 +63,24 @@ R8
 nsum@it@up
 vTBsimple
 R0
-R1
+!s110 1728260434
 !i10b 1
-!s100 bN57d[:O`n?bo^TMB57?e3
+!s100 _mHX0cLd1R1Gb:`C74_e61
 R2
-ITCI@j@bkiJD7=4c7=RbNc0
+IlZ:hZnhlmkCmK@9ORl81F3
 R3
 S1
 R4
-w1728255531
+w1728260427
 8C:/Users/Antonio/Desktop/Developer/verilog/SimpleTestbench/simulation/TBsimple.sv
 FC:/Users/Antonio/Desktop/Developer/verilog/SimpleTestbench/simulation/TBsimple.sv
-!i122 19
-L0 1 28
+!i122 24
+L0 1 37
 R5
 r1
 !s85 0
 31
-R6
+!s108 1728260434.000000
 !s107 C:/Users/Antonio/Desktop/Developer/verilog/SimpleTestbench/simulation/TBsimple.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/Antonio/Desktop/Developer/verilog/SimpleTestbench/simulation/TBsimple.sv|
 !i113 1
@@ -100,7 +100,7 @@ R4
 w1728254938
 8C:/Users/Antonio/Desktop/Developer/verilog/SimpleTestbench/hdl/top.sv
 FC:/Users/Antonio/Desktop/Developer/verilog/SimpleTestbench/hdl/top.sv
-!i122 16
+!i122 20
 L0 1 16
 R5
 r1

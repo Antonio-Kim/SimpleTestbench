@@ -1,19 +1,24 @@
 # Compile of top.sv was successful.
 # Compile of downStream.sv was successful.
 # Compile of sumItUp.sv was successful.
-# 3 compiles, 1 failed with no errors.
-# Compile of top.sv was successful.
-# Compile of downStream.sv was successful.
-# Compile of sumItUp.sv was successful.
 # Compile of TBsimple.sv was successful.
 # 4 compiles, 0 failed with no errors.
+# Compile of TBsimple.sv failed with 1 errors.
+# Compile of TBsimple.sv failed with 1 errors.
+# Compile of TBsimple.sv was successful.
 vsim -gui work.top
 # vsim -gui work.top 
-# Start time: 16:02:29 on Oct 06,2024
+# Start time: 17:20:43 on Oct 06,2024
 # Loading sv_std.std
 # Loading work.top
 # Loading work.sumItUp
 # Loading work.downStream
 # Loading work.TBsimple
-# End time: 16:02:39 on Oct 06,2024, Elapsed time: 0:00:10
-# Errors: 0, Warnings: 3
+add wave -position end sim:/top/*
+run -all
+#          0 inA=  x, go_l=1, done=0, sum=    0, outResult=    0
+#          5 inA= 55, go_l=0, done=0, sum=    0, outResult=    0
+#         15 inA= 22, go_l=1, done=0, sum=   55, outResult=    0
+#         25 inA= 11, go_l=1, done=0, sum=   77, outResult=    0
+#         35 inA=  0, go_l=1, done=1, sum=   88, outResult=    0
+#         45 inA=  0, go_l=1, done=0, sum=    0, outResult=   88
