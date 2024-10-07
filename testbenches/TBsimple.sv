@@ -6,32 +6,54 @@ module TBsimple
 		input logic [15:0] sum, outResult
 	);
 
-	typedef struct{
-		bit [15:0] valuesToAdd[5];
-		byte howMany;
-	} sumItPkt_t;
+	class testSumThread;
+		localparam MAXSIZE = 6;
+		local bit unsigned [15:0] total;
 
-	sumItPkt_t pkt;
+		local struct {
+			bit unsigned [15:0] valuesToAdd[MAXSIZE];
+			byte unsigned howMany;
+		} pkt;
+
+		function new();
+			makePkt()
+		endfunction: new
+
+		task sendPktToAdd;
+			for (byte i = 0; i <pkt.howMany; i++) begin
+				@(posedge clk);
+				inA <= pkt.valuesToAdd[i];
+				go_l <= (i==0) ? 0 : 1;
+			end
+			@(posedge clk);
+			inA <= 0;
+		endtask: sendPktToAdd
+
+		function checkTotal(bit unsigned [15:0] value);
+			$display("checkTotal: value=%d, total=%d", value, total);
+			return value == total;
+		endfunction: checkTotal
+
+		local function makePkt;
+			total = 0;
+			pkt.howMany = $urandom_range(MAXSIZE, 2);
+			for (byte i = 0; i < pkt.howMany; i++) begin
+				pkt.valuesToAdd[i] = $urandom_range(1000,1);
+				total += pkt.valuesToAdd[i];
+			end
+		endfunction
+	endclass: testSumThread
 
 	initial begin
+		testSumThread t;
 		$monitor($stime, " inA=%3d, go_l=%b, done=%b, sum=%5d, outResult=%5d", inA, go_l, done, sum, outResult);
-		pkt.valuesToAdd[0] = 55;
-		pkt.valuesToAdd[1] = 22;
-		pkt.valuesToAdd[2] = 11;
-		pkt.howMany = 3;
 		go_l <= 1;
-
-		sendPktToAdd(pkt);
-		#100 $finish;
-	end
-
-	task sendPktToAdd(input sumItPkt_t pkt);
-		for (byte i = 0; pkt.howMany; i++) begin
-			@(posedge clk);
-			inA <= pkt.valuesToAdd[i];
-			go_l <= (i ==0) ? 0 : 1;
+		repeat (5) begin
+			t = new;
+			t.sendPktToAdd();
+			wait(done);
+			$display("At time=%3d, %s", $stime, (t.checkTotal(sum))?"got right value" : "got wrong value");
 		end
-		@(posedge clk);
-		inA <= 0;
-	endtask
+		#15 $finish;
+	end
 endmodule: TBsimple

@@ -1,24 +1,24 @@
-# Compile of top.sv was successful.
-# Compile of downStream.sv was successful.
-# Compile of sumItUp.sv was successful.
-# Compile of TBsimple.sv was successful.
-# 4 compiles, 0 failed with no errors.
-# Compile of TBsimple.sv failed with 1 errors.
-# Compile of TBsimple.sv failed with 1 errors.
-# Compile of TBsimple.sv was successful.
+# Compile of TBsimple.sv failed with 5 errors.
+# Compile of TBsimple.sv was successful with warnings.
 vsim -gui work.top
 # vsim -gui work.top 
-# Start time: 17:20:43 on Oct 06,2024
+# Start time: 18:08:53 on Oct 06,2024
 # Loading sv_std.std
 # Loading work.top
 # Loading work.sumItUp
 # Loading work.downStream
 # Loading work.TBsimple
-add wave -position end sim:/top/*
 run -all
 #          0 inA=  x, go_l=1, done=0, sum=    0, outResult=    0
-#          5 inA= 55, go_l=0, done=0, sum=    0, outResult=    0
-#         15 inA= 22, go_l=1, done=0, sum=   55, outResult=    0
-#         25 inA= 11, go_l=1, done=0, sum=   77, outResult=    0
-#         35 inA=  0, go_l=1, done=1, sum=   88, outResult=    0
-#         45 inA=  0, go_l=1, done=0, sum=    0, outResult=   88
+#          5 inA=977, go_l=0, done=0, sum=    0, outResult=    0
+#         15 inA=409, go_l=1, done=0, sum=  977, outResult=    0
+#         25 inA=614, go_l=1, done=0, sum= 1386, outResult=    0
+#         35 inA=663, go_l=1, done=0, sum= 2000, outResult=    0
+#         45 inA=589, go_l=1, done=0, sum= 2663, outResult=    0
+#         55 inA= 24, go_l=1, done=0, sum= 3252, outResult=    0
+# checkTotal: value= 3276, total= 3276
+# At time= 65, got right value
+#         65 inA=  0, go_l=1, done=1, sum= 3276, outResult=    0
+#         75 inA=916, go_l=0, done=0, sum=    0, outResult= 3276
+#         85 inA=826, go_l=1, done=0, sum=  916, outResult= 3276
+#         95 inA=545, go_l=1, done=0, sum= 1742, outResult= 3276
