@@ -1,0 +1,15 @@
+# Current time Sun Oct 06 18:38:54 2024
+# ModelSim - Intel FPGA Edition Stack Trace
+# Program = vsim
+# Id = "2020.1"
+# Version = "2020.02"
+# Date = "Feb 28 2020"
+# Platform = win32pe
+# Signature = 4a3706afe29a2b87def93ebd4f2693fa
+# 0    0xff0c3418: 'C:/Users/Antonio/Desktop/Developer/verilog/SimpleTestbench/simulation/TBsimple.sv:22'
+# 1    0xff0c44f8: 'C:/Users/Antonio/Desktop/Developer/verilog/SimpleTestbench/simulation/TBsimple.sv:45'
+# 2    0x0105ec74: '<unknown (@0x105ec74)>'
+# 3    0x00499020: '<unknown (@0x499020)>'
+# End of Stack Trace
+
+

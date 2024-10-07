@@ -6,54 +6,45 @@ module TBsimple
 		input logic [15:0] sum, outResult
 	);
 
+	class sumPkt;
+		rand bit [15:0] howMany;
+		rand bit [15:0] item[];
+
+		constraint N {howMany inside {[2:10]};}
+		constraint arraySize {item.size == howMany;}
+	endclass
+
 	class testSumThread;
-		localparam MAXSIZE = 6;
 		local bit unsigned [15:0] total;
+		local sumPkt pkt = new;
 
-		local struct {
-			bit unsigned [15:0] valuesToAdd[MAXSIZE];
-			byte unsigned howMany;
-		} pkt;
-
-		function new();
-			makePkt();
-		endfunction: new
-
-		task sendPktToAdd;
-			for (byte i = 0; i <pkt.howMany; i++) begin
+		task sendPktToThread;
+			total = 0;
+			assert(pkt.randomize()) else $error("oops");
+			for (byte i = 0; i < pkt.howMany; i++) begin
 				@(posedge clk);
-				inA <= pkt.valuesToAdd[i];
+				inA <= pkt.item[i];
+				total += pkt.item[i];
 				go_l <= (i==0) ? 0 : 1;
 			end
 			@(posedge clk);
 			inA <= 0;
-		endtask: sendPktToAdd
+		endtask
 
 		function checkTotal(bit unsigned [15:0] value);
-			$display("checkTotal: value=%d, total=%d", value, total);
-			return value == total;
+			return (value == total);
 		endfunction: checkTotal
-
-		local function makePkt;
-			total = 0;
-			pkt.howMany = $urandom_range(MAXSIZE, 2);
-			for (byte i = 0; i < pkt.howMany; i++) begin
-				pkt.valuesToAdd[i] = $urandom_range(1000,1);
-				total += pkt.valuesToAdd[i];
-			end
-		endfunction
 	endclass: testSumThread
 
 	initial begin
-		testSumThread t;
+		testSumThread t = new(); 
 		$monitor($stime, " inA=%3d, go_l=%b, done=%b, sum=%5d, outResult=%5d", inA, go_l, done, sum, outResult);
 		go_l <= 1;
 		repeat (5) begin
-			t = new;
-			t.sendPktToAdd();
+			t.sendPktToThread(); // Correct method call
 			wait(done);
-			$display("At time=%3d, %s", $stime, (t.checkTotal(sum))?"got right value" : "got wrong value");
+			assert (t.checkTotal(sum)) else $error("OOPS"); 
 		end
-		#15 $finish;
+		$finish;
 	end
 endmodule: TBsimple
